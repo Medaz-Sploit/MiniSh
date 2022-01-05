@@ -1,28 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   initialize_data.c                                  :+:      :+:    :+:   */
+/*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/05 10:15:32 by mazoukni          #+#    #+#             */
-/*   Updated: 2022/01/05 11:19:44 by mazoukni         ###   ########.fr       */
+/*   Created: 2022/01/02 21:21:17 by mazoukni          #+#    #+#             */
+/*   Updated: 2022/01/05 11:34:12 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/minishell.h"
+#include "../inc/minishell.h"
 
-t_parser	*initialize_data(t_parser *parser)
+int main(int argc, char **argv, char **envp)
 {
-	parser = ft_calloc(1, sizeof(t_parser));
-	if (!parser)
-		return (0);
-	parser->env = NULL;
-	parser->exit_status = 0;
-	parser->line = NULL;
-	parser->number_of_commands = 0;
-	parser->signal = 0;
-	parser->syntax_check = 0;
-	parser->token = NULL;
-	return (parser);
+	t_parser *parser;
+	
+	parser = NULL;
+	argv = NULL;
+	argc = 0;
+	parser = initialize_data(parser);
+	init_env(parser, envp);
+	while (1)
+	{
+		parsing(parser);
+		
+	}
+	return (0);
 }

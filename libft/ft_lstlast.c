@@ -1,29 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/02 21:21:17 by mazoukni          #+#    #+#             */
-/*   Updated: 2022/01/05 10:41:39 by mazoukni         ###   ########.fr       */
+/*   Created: 2022/01/05 12:19:14 by mazoukni          #+#    #+#             */
+/*   Updated: 2022/01/05 12:23:24 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/minishell.h"
 
-int main(int argc, char **argv, char **envp)
+#include "libft.h"
+
+t_list	*ft_lstlast(t_list *lst)
 {
-	t_parser *parser;
-	
-	argv = NULL;
-	argc = 0;
-	parser = initialize_data(parser);
-	// init_env(parser, envp);
-	// while (1)
-	// {
-	// 	parsing(parser);
-		
-	// }
-	
+	if (!lst)
+		return (lst);
+	while (lst->next)
+		lst = lst->next;
+	return (lst);
 }

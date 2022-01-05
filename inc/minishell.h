@@ -6,7 +6,7 @@
 /*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/02 21:20:29 by mazoukni          #+#    #+#             */
-/*   Updated: 2022/01/05 11:08:05 by mazoukni         ###   ########.fr       */
+/*   Updated: 2022/01/05 12:27:53 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <fcntl.h>
-
-typedef struct s_list
-{
-	char	*data;
-	struct	s_list *next;
-}				t_list;
+#include "../libft/libft.h"
 
 typedef struct s_token
 {

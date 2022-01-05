@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mazoukni <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/11 19:14:28 by mazoukni          #+#    #+#              #
-#    Updated: 2019/10/25 04:48:56 by mazoukni         ###   ########.fr        #
+#    Updated: 2022/01/05 12:26:59 by mazoukni         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,19 +24,11 @@ SRC = 		ft_isalnum.c ft_memmove.c ft_split.c \
 			ft_isprint.c ft_memcmp.c ft_putnbr_fd.c ft_strlcat.c     \
 			ft_strrchr.c ft_calloc.c ft_itoa.c ft_memcpy.c \
 			ft_putstr_fd.c ft_strlcpy.c ft_strtrim.c \
-			ft_insert_element.c	
+			ft_insert_element.c	ft_lst_iter.c ft_lstadd_back.c \
+			ft_lstadd_front.c ft_lstclear.c ft_lstdel_one.c ft_lstlast.c \
+			ft_lstmap.c ft_lstnew.c ft_lstsize.c
 
-OBJ =		ft_isalnum.o ft_memmove.o ft_split.o \
-			ft_strlen.o ft_substr.o ft_isalpha.o \
-			ft_memset.o ft_strchr.o ft_strmapi.o \
-			ft_tolower.o ft_isascii.o ft_memccpy.o \
-			ft_putchar_fd.o ft_strdup.o ft_strncmp.o \
-			ft_toupper.o ft_atoi.o ft_isdigit.o ft_memchr.o \
-			ft_putendl_fd.o ft_strjoin.o ft_strnstr.o ft_bzero.o \
-			ft_isprint.o ft_memcmp.o ft_putnbr_fd.o ft_strlcat.o \
-			ft_strrchr.o ft_calloc.o ft_itoa.o ft_memcpy.o \
-			ft_putstr_fd.o ft_strlcpy.o ft_strtrim.o \
-			ft_insert_element.o
+OBJ =		$(SRC:.c=.o)
 
 all : $(NAME)
 

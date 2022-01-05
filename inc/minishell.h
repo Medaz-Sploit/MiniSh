@@ -6,7 +6,7 @@
 /*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/02 21:20:29 by mazoukni          #+#    #+#             */
-/*   Updated: 2022/01/05 10:32:16 by mazoukni         ###   ########.fr       */
+/*   Updated: 2022/01/05 10:41:57 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,5 +66,5 @@ typedef struct s_parser
 void init_env(t_parser *parser, char **envp);
 void init_struct(t_parser *parser);
 void	parsing(t_parser *parser);
-void	initialize_data(t_parser *parser);
+t_parser	*initialize_data(t_parser *parser);
 #endif

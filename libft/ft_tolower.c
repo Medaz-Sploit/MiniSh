@@ -1,23 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mazoukni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/12 18:00:07 by mazoukni          #+#    #+#             */
-/*   Updated: 2019/10/20 08:00:17 by mazoukni         ###   ########.fr       */
+/*   Created: 2019/10/12 16:04:42 by mazoukni          #+#    #+#             */
+/*   Updated: 2019/10/14 18:02:35 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-void	*ft_calloc(size_t count, size_t size)
+int	ft_tolower(int c)
 {
-	void *ret;
-
-	if (!(ret = (void*)malloc(size * count)))
-		return (NULL);
-	ft_bzero(ret, count * size);
-	return (ret);
+	if (c >= 65 && c <= 90)
+		c += 32;
+	return (c);
 }

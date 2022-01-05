@@ -6,13 +6,13 @@
 /*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 10:15:32 by mazoukni          #+#    #+#             */
-/*   Updated: 2022/01/05 10:16:11 by mazoukni         ###   ########.fr       */
+/*   Updated: 2022/01/05 10:49:31 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
 
-void	initialize_data(t_parser *parser)
+t_parser	*initialize_data(t_parser *parser)
 {
-	
+	parser 
 }

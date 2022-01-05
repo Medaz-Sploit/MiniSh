@@ -1,23 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_memccpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mazoukni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/12 18:00:07 by mazoukni          #+#    #+#             */
-/*   Updated: 2019/10/20 08:00:17 by mazoukni         ###   ########.fr       */
+/*   Created: 2019/10/10 13:14:36 by mazoukni          #+#    #+#             */
+/*   Updated: 2019/10/20 05:26:34 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t count, size_t size)
+void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 {
-	void *ret;
+	unsigned char *ptr;
 
-	if (!(ret = (void*)malloc(size * count)))
-		return (NULL);
-	ft_bzero(ret, count * size);
-	return (ret);
+	ptr = (unsigned char*)src;
+	while (n > 0)
+	{
+		if ((unsigned char)c == *ptr)
+		{
+			*((unsigned char*)dst) = *ptr;
+			return (dst + 1);
+			break ;
+		}
+		*((unsigned char*)dst) = *ptr;
+		n--;
+		ptr++;
+		dst++;
+	}
+	return (0);
 }

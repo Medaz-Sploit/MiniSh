@@ -8,7 +8,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This program built for i386-apple-darwin11.3.0
  
 
-# Make data base, printed on Wed Jan  5 10:12:21 2022
+# Make data base, printed on Wed Jan  5 10:58:51 2022
 
 # Variables
 
@@ -16,12 +16,13 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 <D = $(patsubst %/,%,$(dir $<))
 # automatic
 ?F = $(notdir $?)
-# makefile (from `Makefile', line 21)
-OBJ = $(SRC:.c=.o)
 # makefile (from `Makefile', line 20)
-SRC = srcs/*
+OBJ = $(SRC:.c=.o)
+# makefile (from `Makefile', line 19)
+SRC = srcs/Execution/*.c srcs/Parser/*.c
 # environment
 VSCODE_LOG_NATIVE = false
+ 
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
 # automatic
@@ -98,6 +99,8 @@ MAKE = $(MAKE_COMMAND)
 MAKECMDGOALS := all
 # environment
 SHLVL = 1
+# makefile (from `Makefile', line 15)
+LIBFT = libft/libft.a
 # makefile (from `Makefile', line 14)
 CC = gcc
 # environment
@@ -111,11 +114,11 @@ USER = medazsploit
 # environment
 GOROOT = /usr/local/opt/go/libexec
 # makefile (from `Makefile', line 13)
- 
 NAME = minishell
-# makefile (from `Makefile', line 18)
+# makefile (from `Makefile', line 17)
 CDFLAG = -I /usr/local/opt/readline/include
 # environment
+ 
 LESS = -R
 # automatic
 %D = $(patsubst %/,%,$(dir $%))
@@ -141,7 +144,7 @@ XPC_SERVICE_NAME = application.com.microsoft.VSCode.12288273.12288279
 +D = $(patsubst %/,%,$(dir $+))
 # automatic
 +F = $(notdir $+)
-# makefile (from `Makefile', line 19)
+# makefile (from `Makefile', line 18)
 LDFLAG = -L /usr/local/opt/readline/lib
 # environment
 __CF_USER_TEXT_ENCODING = 0x1F5:0x0:0x0
@@ -161,7 +164,7 @@ SECURITYSESSIONID = 186a3
 ^F = $(notdir $^)
 # default
 SUFFIXES := 
-# makefile (from `Makefile', line 17)
+# makefile (from `Makefile', line 16)
 FLAGS = -Wall -Wextra -Wall -lreadline
 # default
 .INCLUDE_DIRS = /usr/local/include
@@ -172,7 +175,7 @@ LANG = C
 # environment
 VSCODE_PID = 435
 # variable set hash-table stats:
-# Load=79/1024=8%, Rehash=0, Collisions=2/115=2%
+# Load=80/1024=8%, Rehash=0, Collisions=2/115=2%
 
 # Pattern-specific Variable Values
 
@@ -182,7 +185,6 @@ VSCODE_PID = 435
 
 # . (device 16777220, inode 12296283): 8 files, no impossibilities.
 
- 
 # 8 files, no impossibilities in 1 directories.
 
 # Implicit Rules
@@ -190,6 +192,7 @@ VSCODE_PID = 435
 # No implicit rules.
 
 # Files
+ 
 
 all: minishell
 #  Command-line target.
@@ -198,7 +201,7 @@ all: minishell
 #  File has been updated.
 #  Needs to be updated (-q is set).
 # variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/8=0%
+# Load=0/32=0%, Rehash=0, Collisions=0/9=0%
 
 # Not a target:
 .SUFFIXES:
@@ -209,7 +212,7 @@ all: minishell
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-01-05 10:12:07
+#  Last modified 2022-01-05 10:57:17
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -238,16 +241,16 @@ minishell:
 # automatic
 # ? := 
 # variable set hash-table stats:
-# Load=8/32=25%, Rehash=0, Collisions=5/16=31%
-#  commands to execute (from `Makefile', line 26):
-	$(CC) $(FLAGS) $(CDFLAG) $(LDFLAG) $(SRC) -o $(NAME)
+# Load=8/32=25%, Rehash=0, Collisions=5/17=29%
+#  commands to execute (from `Makefile', line 25):
+	$(CC) $(FLAGS) $(CDFLAG) $(LDFLAG) $(LIBFT) $(SRC) -o $(NAME)
 	
 
 fclean: clean
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  commands to execute (from `Makefile', line 32):
+#  commands to execute (from `Makefile', line 31):
 	@rm -rf $(NAME)
 	
 
@@ -266,7 +269,7 @@ clean:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  commands to execute (from `Makefile', line 29):
+#  commands to execute (from `Makefile', line 28):
 	@rm -rf $(OBJ)
 	
 
@@ -283,6 +286,6 @@ clean:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Wed Jan  5 10:12:21 2022
+# Finished Make data base on Wed Jan  5 10:58:51 2022
 
  

@@ -1,20 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   initialize_data.c                                  :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/05 10:15:32 by mazoukni          #+#    #+#             */
-/*   Updated: 2022/01/05 11:01:30 by mazoukni         ###   ########.fr       */
+/*   Created: 2022/01/05 11:01:44 by mazoukni          #+#    #+#             */
+/*   Updated: 2022/01/05 11:07:55 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
 
-t_parser	*initialize_data(t_parser *parser)
+int exit_error(int e)
 {
-	parser = ft_calloc(1, sizeof(t_parser));
-	if (!parser)
-		return (0);
+	if (e == 0)
+		printf("Error:\n\t Exit Successfuly\n");
+	else if (e < 1 && e > 10)
+		printf("Error:\n\t Malloc FAILED\n");
+	else
+		printf("Error\n")
 }

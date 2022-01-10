@@ -6,7 +6,7 @@
 /*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/02 21:20:29 by mazoukni          #+#    #+#             */
-/*   Updated: 2022/01/05 12:27:53 by mazoukni         ###   ########.fr       */
+/*   Updated: 2022/01/08 13:38:47 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,30 @@
 #include <stdlib.h>
 #include <fcntl.h>
 #include "../libft/libft.h"
+# define TOKEN_CMD 0
+# define TOKEN_OPT 1
+# define TOKEN_STRING 2
+# define TOKEN_PIPE 3
+# define TOKEN_LRED 4
+# define TOKEN_RRED 5
+# define TOKEN_APP_RED 6
+# define TOKEN_INPUT_RED 7
 
+typedef struct s_lexeme
+{
+	char *value;
+	int type;
+}	t_lexeme;
+
+
+typedef struct	s_node
+{
+	void	*content;
+	struct s_node *left;
+	struct s_node *right;
+}				t_node;
 typedef struct s_token
+
 {
 	char	c;
 	char	*token;
@@ -63,4 +85,5 @@ void init_struct(t_parser *parser);
 void	parsing(t_parser *parser);
 t_parser	*initialize_data(t_parser *parser);
 int exit_error(int e);
+t_token	*tockinizer(t_parser *parser, size_t index);
 #endif

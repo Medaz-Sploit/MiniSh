@@ -8,7 +8,6 @@ void init_env(t_parser *parser, char **envp)
 	int i;
 	
 	i = 1;
-	
 	env = ft_calloc(1, sizeof(t_env));
 	if (!env)
 		exit_error(2);

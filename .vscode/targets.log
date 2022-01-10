@@ -6,8 +6,9 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # PARTICULAR PURPOSE.
 
 # This program built for i386-apple-darwin11.3.0
+ 
 
-# Make data base, printed on Sat Jan  8 13:37:46 2022
+# Make data base, printed on Mon Jan 10 19:56:34 2022
 
 # Variables
 
@@ -158,7 +159,7 @@ SECURITYSESSIONID = 186a3
 # default
 SUFFIXES := 
 # makefile (from `Makefile', line 16)
-FLAGS = -Wall -Wextra -Wall -lreadline 
+FLAGS = -lreadline 
 # default
 .INCLUDE_DIRS = /usr/local/include
 # environment
@@ -168,7 +169,7 @@ LANG = C
 # environment
 VSCODE_PID = 435
 # variable set hash-table stats:
-# Load=78/1024=8%, Rehash=0, Collisions=2/104=2%
+# Load=78/1024=8%, Rehash=0, Collisions=2/113=2%
 
 # Pattern-specific Variable Values
 
@@ -176,9 +177,9 @@ VSCODE_PID = 435
 
 # Directories
 
-# . (device 16777220, inode 12296283): 10 files, no impossibilities.
+# . (device 16777220, inode 12296283): 9 files, no impossibilities.
 
-# 10 files, no impossibilities in 1 directories.
+# 9 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -191,9 +192,9 @@ all: minishell
 #  Implicit rule search has been done.
 #  File does not exist.
 #  File has been updated.
-#  Successfully updated.
+#  Needs to be updated (-q is set).
 # variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+# Load=0/32=0%, Rehash=0, Collisions=0/9=0%
 
 # Not a target:
 .SUFFIXES:
@@ -204,7 +205,7 @@ all: minishell
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-01-06 02:08:52
+#  Last modified 2022-01-10 19:56:23
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -212,9 +213,28 @@ Makefile:
 
 minishell:
 #  Implicit rule search has not been done.
-#  Last modified 2022-01-07 13:20:29
+#  Implicit/static pattern stem: `'
+#  File does not exist.
 #  File has been updated.
-#  Successfully updated.
+#  Needs to be updated (-q is set).
+# automatic
+# @ := minishell
+# automatic
+# % := 
+# automatic
+# * := 
+# automatic
+# + := 
+# automatic
+# | := 
+# automatic
+# < := 
+# automatic
+# ^ := 
+# automatic
+# ? := 
+# variable set hash-table stats:
+# Load=8/32=25%, Rehash=0, Collisions=5/17=29%
 #  commands to execute (from `Makefile', line 23):
 	$(CC) $(FLAGS) $(CDFLAG) $(LDFLAG) $(LIBFT) $(SRC) -o $(NAME)
 	
@@ -247,7 +267,7 @@ clean:
 	
 
 # files hash-table stats:
-# Load=8/1024=1%, Rehash=0, Collisions=0/25=0%
+# Load=8/1024=1%, Rehash=0, Collisions=0/26=0%
 # VPATH Search Paths
 
 # No `vpath' search paths.
@@ -259,6 +279,6 @@ clean:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Sat Jan  8 13:37:46 2022
+# Finished Make data base on Mon Jan 10 19:56:34 2022
 
  

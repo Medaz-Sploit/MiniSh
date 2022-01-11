@@ -6,7 +6,7 @@
 /*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 19:50:45 by mazoukni          #+#    #+#             */
-/*   Updated: 2022/01/11 19:57:18 by mazoukni         ###   ########.fr       */
+/*   Updated: 2022/01/11 20:11:36 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ t_token	*tockinizer(t_parser *parser, size_t index)
 	while (1)
 	{
 		if (parser->line[index] == '\'')
-			single_quote = (single_quote == 1) ? 0 : add_single_quote(tocken, '\'', &index);
+			printf("Single quote\n");
 		else if (parser->line[index] == '"')
-			double_quote = (double_quote == 1) ? 0 : add_single_quote(tocken, '"', &index);
+			printf("Double quote\n");
 		else if (parser->line[index] == '>')
 			printf("Output\n");
 		else if (parser->line[index] == '<')

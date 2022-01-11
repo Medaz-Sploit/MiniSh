@@ -6,7 +6,7 @@
 /*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 19:50:45 by mazoukni          #+#    #+#             */
-/*   Updated: 2022/01/10 19:56:53 by mazoukni         ###   ########.fr       */
+/*   Updated: 2022/01/11 19:57:18 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,22 +20,24 @@ t_token	*tockinizer(t_parser *parser, size_t index)
 
 	single_quote = 0;
 	double_quote = 0;
-	tocken = NULL;
+	tocken = (void *) 0;
+	parser->command_table = (t_cmd *)malloc(sizeof(t_cmd));
+	parser->command_table->cmd = NULL;
 	while (1)
-	{/*
+	{
 		if (parser->line[index] == '\'')
-			single_quote = (single_quote == 0) ? add_single_quote(tocken, '\'', &index) : 0;
+			single_quote = (single_quote == 1) ? 0 : add_single_quote(tocken, '\'', &index);
 		else if (parser->line[index] == '"')
-			double_quote = (double_quote == 0) add_double_quote(tocken, '"', &index) : 0;
+			double_quote = (double_quote == 1) ? 0 : add_single_quote(tocken, '"', &index);
 		else if (parser->line[index] == '>')
-			output_token(tocken, '>', &index);
+			printf("Output\n");
 		else if (parser->line[index] == '<')
-			input_token(tocken, '<', &index);
+			printf("Input\n");
 		else if (parser->line[index] == '|')
-			pipe_token(tocken, '|', &index);
-		*/
+			printf("Pipe\n");
 		if (index++ > ft_strlen(parser->line))
 			break;
 	}
+	parser = add_cmd(parser, &index);
 	return (tocken);
 }

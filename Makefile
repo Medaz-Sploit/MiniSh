@@ -6,7 +6,7 @@
 #    By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/02 21:17:27 by mazoukni          #+#    #+#              #
-#    Updated: 2022/01/10 19:56:23 by mazoukni         ###   ########.fr        #
+#    Updated: 2022/01/10 23:01:55 by mazoukni         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ OBJ = $(SRC:.c=.o)
 all: $(NAME)
 
 $(NAME):
-	$(CC) $(FLAGS) $(CDFLAG) $(LDFLAG) $(LIBFT) $(SRC) -o $(NAME)
+	$(CC) $(FLAGS) $(CDFLAG) $(LDFLAG) $(LIBFT) $(SRC)  -o $(NAME)
 
 clean:
 	@rm -rf $(OBJ)

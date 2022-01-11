@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.c                                        :+:      :+:    :+:   */
+/*   exec_cmd.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/02 21:21:17 by mazoukni          #+#    #+#             */
-/*   Updated: 2022/01/11 19:14:55 by mazoukni         ###   ########.fr       */
+/*   Created: 2022/01/10 21:20:44 by mazoukni          #+#    #+#             */
+/*   Updated: 2022/01/11 19:41:17 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/minishell.h"
+#include "../../inc/minishell.h"
 
-int main(int argc, char **argv, char **envp)
+void	exec_cmd(t_parser *parser, char **envp)
 {
-	t_parser *parser;
+	pid_t pid;
+	int status;
 	
-	parser = NULL;
-	argv = NULL;
-	argc = 0;
-	parser = initialize_data(parser);
-	init_env(parser, envp);
-	while (1)
+	pid = fork();
+	if (pid == -1)
+		printf("Error Fork\n");
+	else if (pid > 0)
+		waitpid(pid, &status, 0);
+	else
 	{
-		parser->line = readline("\x1B[33mLAIN_IS_LAIN@Medaz-Sploit$> \x1B[37m");
-		parsing(parser);
-		exec_cmd(parser, envp);
+		dup2(parser->command_table->input, 0);
+		dup2(parser->command_table->output, 1);
+		execve(parser->command_table->cmd, parser->command_table->s, envp);
 	}
-	return (0);
 }

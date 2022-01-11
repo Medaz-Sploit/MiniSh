@@ -6,7 +6,7 @@
 /*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/02 21:20:29 by mazoukni          #+#    #+#             */
-/*   Updated: 2022/01/08 13:38:47 by mazoukni         ###   ########.fr       */
+/*   Updated: 2022/01/11 19:43:26 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #include <readline/readline.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
 #include <fcntl.h>
 #include "../libft/libft.h"
 # define TOKEN_CMD 0
@@ -70,7 +71,7 @@ typedef struct s_env
 
 typedef struct s_parser
 {
-	t_list	*command_table;
+	t_cmd	*command_table;
 	t_list	*env;
 	t_list	*token;
 	char	*line;
@@ -84,6 +85,9 @@ void init_env(t_parser *parser, char **envp);
 void init_struct(t_parser *parser);
 void	parsing(t_parser *parser);
 t_parser	*initialize_data(t_parser *parser);
-int exit_error(int e);
+void exit_error(int e);
 t_token	*tockinizer(t_parser *parser, size_t index);
+void	ft_lstadd_back_type(t_parser *parser);
+t_parser	*add_cmd(t_parser *parser, size_t *index);
+void	exec_cmd(t_parser *parser, char **envp);
 #endif

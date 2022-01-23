@@ -1,31 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.c                                        :+:      :+:    :+:   */
+/*   ft_cd.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/02 21:21:17 by mazoukni          #+#    #+#             */
-/*   Updated: 2022/01/23 13:56:58 by mazoukni         ###   ########.fr       */
+/*   Created: 2022/01/23 15:40:31 by mazoukni          #+#    #+#             */
+/*   Updated: 2022/01/23 15:41:20 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/minishell.h"
+#include "../../inc/minishell.h"
 
-int main(int argc, char **argv, char **envp)
+void ft_cd(t_parser *parser, char **envp)
 {
-	t_parser *parser;
 	
-	parser = NULL;
-	argv = NULL;
-	argc = 0;
-	parser = initialize_data(parser);
-	init_env(parser, envp);
-	while (1)
-	{
-		parser->line = readline("\x1B[33mLAIN_IS_LAIN@Medaz-Sploit$> \x1B[37m");
-		parsing(parser);
-		check_builtins(parser, envp);
-	}
-	return (0);
 }

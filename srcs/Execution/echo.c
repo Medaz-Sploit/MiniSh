@@ -1,28 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   initialize_data.c                                  :+:      :+:    :+:   */
+/*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/05 10:15:32 by mazoukni          #+#    #+#             */
-/*   Updated: 2022/01/23 15:28:36 by mazoukni         ###   ########.fr       */
+/*   Created: 2022/01/23 14:24:02 by mazoukni          #+#    #+#             */
+/*   Updated: 2022/01/23 15:30:53 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
 
-t_parser	*initialize_data(t_parser *parser)
+void	echo(t_parser *parser)
 {
-	parser = ft_calloc(1, sizeof(t_parser));
-	if (!parser)
-		return (0);
-	parser->env = NULL;
+	int		i;
+	int		j;
+	char	**str;
+
+	str = parser->command_table->s;
+	i = 0;
+	j = 0;
+	while ((!ft_strncmp(str[i++], "-n", 3)) && str[i++])
+		j = 1;
+	while (str[i])
+	{
+		write(parser->command_table->output, str[i], strlen(str[i]));
+		if (str[++i])
+			write(parser->command_table->output, " ", 1);
+	}
+	if (j == 0)
+		write(parser->command_table->output, "\n", 1);
 	parser->exit_status = 0;
-	parser->line = NULL;
-	parser->number_of_commands = 0;
-	parser->signal = 0;
-	parser->syntax_check = 0;
-	parser->token = NULL;
-	return (parser);
 }

@@ -8,7 +8,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This program built for i386-apple-darwin11.3.0
  
 
-# Make data base, printed on Tue Jan 11 20:13:51 2022
+# Make data base, printed on Sun Jan 23 15:30:48 2022
 
 # Variables
 
@@ -43,7 +43,7 @@ VSCODE_VERBOSE_LOGGING = true
 # environment
 __CFBundleIdentifier = com.microsoft.VSCode
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /var/folders/k1/1_k1zk917jx3wcyhjq70_1x80000gn/T/vscode-ipc-e19d4b8e-73c9-44b9-bce7-e039bd2e1de1.sock
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/k1/1_k1zk917jx3wcyhjq70_1x80000gn/T/vscode-ipc-2e130d3b-8407-44ca-babf-7a63e51fb41b.sock
 # environment
 VSCODE_CWD = /
 # environment
@@ -53,19 +53,17 @@ LSCOLORS = Gxfxcxdxbxegedabagacad
 # environment
 GOPATH = /Users/medazsploit/go
 # environment
-LaunchInstanceID = AC4996ED-2A6B-4934-B7A6-B3FA609A9115
-# environment
 VSCODE_LOG_STACK = false
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # default
 .FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
 # environment
-SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.AzswcfzmyR/Listeners
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.fY968rXjlH/Listeners
 # automatic
 %F = $(notdir $%)
 # environment
-DISPLAY = /private/tmp/com.apple.launchd.SAtRZjbeE3/org.xquartz:0
+DISPLAY = /private/tmp/com.apple.launchd.VMhC61ct9p/org.xquartz:0
 # environment
 VSCODE_PIPE_LOGGING = true
 # environment
@@ -112,6 +110,7 @@ USER = medazsploit
 .DEFAULT_GOAL := all
 # environment
 GOROOT = /usr/local/opt/go/libexec
+ 
 # makefile (from `Makefile', line 13)
 NAME = minishell
 # environment
@@ -152,8 +151,6 @@ MAKEFILES :=
 PAGER = less
 # environment
 LC_ALL = C
-# environment
-SECURITYSESSIONID = 186a3
 # automatic
 ^F = $(notdir $^)
 # default
@@ -167,9 +164,9 @@ MAKELEVEL := 0
 # environment
 LANG = C
 # environment
-VSCODE_PID = 435
+VSCODE_PID = 3882
 # variable set hash-table stats:
-# Load=78/1024=8%, Rehash=0, Collisions=2/104=2%
+# Load=76/1024=7%, Rehash=0, Collisions=2/102=2%
 
 # Pattern-specific Variable Values
 
@@ -205,7 +202,7 @@ all: minishell
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-01-11 20:12:55
+#  Last modified 2022-01-23 15:30:11
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -213,7 +210,7 @@ Makefile:
 
 minishell:
 #  Implicit rule search has not been done.
-#  Last modified 2022-01-11 20:11:40
+#  Last modified 2022-01-23 15:30:22
 #  File has been updated.
 #  Successfully updated.
 #  commands to execute (from `Makefile', line 23):
@@ -225,6 +222,7 @@ fclean: clean
 #  Modification time never checked.
 #  File has not been updated.
 #  commands to execute (from `Makefile', line 28):
+ 
 	@rm -rf $(NAME)
 	
 
@@ -260,6 +258,6 @@ clean:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Tue Jan 11 20:13:51 2022
+# Finished Make data base on Sun Jan 23 15:30:48 2022
 
  

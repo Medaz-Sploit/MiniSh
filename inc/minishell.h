@@ -6,7 +6,7 @@
 /*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/02 21:20:29 by mazoukni          #+#    #+#             */
-/*   Updated: 2022/01/11 19:43:26 by mazoukni         ###   ########.fr       */
+/*   Updated: 2022/01/23 15:42:49 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <fcntl.h>
+#include <signal.h>
 #include "../libft/libft.h"
 # define TOKEN_CMD 0
 # define TOKEN_OPT 1
@@ -90,4 +91,8 @@ t_token	*tockinizer(t_parser *parser, size_t index);
 void	ft_lstadd_back_type(t_parser *parser);
 t_parser	*add_cmd(t_parser *parser, size_t *index);
 void	exec_cmd(t_parser *parser, char **envp);
+void	echo(t_parser *parser);
+void	check_builtins(t_parser *parser, char **envp);
+void	ft_exit();
+void ft_cd(t_parser *parser, char **envp);
 #endif

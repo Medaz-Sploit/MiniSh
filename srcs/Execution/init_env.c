@@ -15,8 +15,6 @@ void init_env(t_parser *parser, char **envp)
 	env->name = ft_strdup(env_table[0]);
 	env->content = ft_strdup(env_table[1]);
 	tmp_list = ft_lstnew(env_table);
-	printf("env_table name: %s\tcontent: %s\n", env->name, env->content);
-	free(env_table);
 	while (envp[i])
 	{
 		env_table = ft_split(envp[i], '=');
@@ -26,7 +24,6 @@ void init_env(t_parser *parser, char **envp)
 		env->name = ft_strdup(env_table[0]);
 		env->content = ft_strdup(env_table[1]);
 		ft_lstadd_back(&(tmp_list), ft_lstnew(env));
-		printf("%s=%s\n", env->name, env->content);
 		free(env_table);
 		i++;
 	}

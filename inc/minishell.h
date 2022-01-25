@@ -6,7 +6,7 @@
 /*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/02 21:20:29 by mazoukni          #+#    #+#             */
-/*   Updated: 2022/01/23 15:42:49 by mazoukni         ###   ########.fr       */
+/*   Updated: 2022/01/23 16:11:27 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,4 +95,5 @@ void	echo(t_parser *parser);
 void	check_builtins(t_parser *parser, char **envp);
 void	ft_exit();
 void ft_cd(t_parser *parser, char **envp);
+void	ft_pwd(t_parser *parser);
 #endif

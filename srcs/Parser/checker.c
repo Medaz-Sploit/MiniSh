@@ -1,31 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/10 19:36:37 by mazoukni          #+#    #+#             */
-/*   Updated: 2022/01/25 10:39:11 by mazoukni         ###   ########.fr       */
+/*   Created: 2022/02/02 23:15:19 by mazoukni          #+#    #+#             */
+/*   Updated: 2022/02/02 23:20:26 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../inc/minishell.h"
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t n)
+int	ft_spaceskip(char *line, int *i)
 {
-	size_t lsrc;
-	size_t i;
-
-	i = 0;
-	lsrc = ft_strlen((char*)src);
-	if (n == 0)
-		return (lsrc);
-	while (src[i] != '\0' && i < n - 1)
-	{
-		dst[i] = src[i];
-		i++;
-	}
-	dst[i] = '\0';
-	return (lsrc);
+	if (line == NULL)
+		return (0);
+	while (line && ((line[*i] == ' ' || line[*i] == '\t' || line[*i] == '\n')
+			|| (line[*i] == '\r' || line[*i] == '\v' || line[*i] == '\f')))
+		(*i)++;
+	return (1);
 }

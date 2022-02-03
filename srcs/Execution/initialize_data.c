@@ -6,23 +6,23 @@
 /*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 10:15:32 by mazoukni          #+#    #+#             */
-/*   Updated: 2022/01/23 15:28:36 by mazoukni         ###   ########.fr       */
+/*   Updated: 2022/02/01 22:27:41 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
 
-t_parser	*initialize_data(t_parser *parser)
+int	initialize_data()
 {
-	parser = ft_calloc(1, sizeof(t_parser));
-	if (!parser)
+	g_parser = ft_calloc(1, sizeof(t_parser));
+	if (!g_parser)
 		return (0);
-	parser->env = NULL;
-	parser->exit_status = 0;
-	parser->line = NULL;
-	parser->number_of_commands = 0;
-	parser->signal = 0;
-	parser->syntax_check = 0;
-	parser->token = NULL;
-	return (parser);
+	g_parser->env = NULL;
+	g_parser->exit_status = 0;
+	g_parser->line = NULL;
+	g_parser->number_of_commands = 0;
+	g_parser->signal = 0;
+	g_parser->syntax_check = 0;
+	g_parser->token = NULL;
+	return (1);
 }

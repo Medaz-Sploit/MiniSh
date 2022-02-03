@@ -6,20 +6,11 @@
 /*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 13:26:42 by mazoukni          #+#    #+#             */
-/*   Updated: 2022/01/23 15:28:57 by mazoukni         ###   ########.fr       */
+/*   Updated: 2022/02/02 15:19:44 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
-
-t_token	add_single_quote(t_parser *parser, char c, size_t *index)
-{
-	//tocken = NULL;
-	//if ( == '\'')
-	//{
-	//	//
-	//}
-}
 
 void	free_table(char **table)
 {
@@ -59,18 +50,18 @@ char *get_cmd_path(char **path, char *cmd)
 		i++;
 	}
 	if (fd < 0)
-		printf("command not found\n");
+		perror("command not found\n");
 	return (ft_strdup(cmd));
 }
 
-char	*get_command(t_parser *parser, char *str)
+char	*get_command(char *str)
 {
 	t_list	*env_tmp;
 	char	**path;
 	char	*cmd;
 	t_env	*env_l;
 
-	env_tmp = parser->env;
+	env_tmp = g_parser->env;
 	while (env_tmp)
 	{
 		env_l = env_tmp->content;
@@ -84,7 +75,7 @@ char	*get_command(t_parser *parser, char *str)
 	return (str);
 }
 
-t_parser	*add_cmd(t_parser *parser, size_t *index)
+void	add_cmd()
 {
 	t_cmd *cmd;
 	char **tab;
@@ -92,13 +83,41 @@ t_parser	*add_cmd(t_parser *parser, size_t *index)
 	tab = ft_calloc(1, sizeof(char *));
 	if (!cmd || !tab)
 		printf("Error\n");
-	parser->command_table->output = 1;
-	parser->command_table->input = 0;
-	tab = ft_split(parser->line, ' ');
+	g_parser->command_table->output = 1;
+	g_parser->command_table->input = 0;
+	tab = ft_split(g_parser->line, ' ');
 	cmd->s = tab;
 	cmd->cmd = cmd->s[0];
-	cmd->cmd = get_command(parser, cmd->cmd);
-	parser->command_table->s = cmd->s;
-	parser->command_table->cmd = cmd->cmd;
-	return (parser);
+	cmd->cmd = get_command(cmd->cmd);
+	g_parser->command_table->s = cmd->s;
+	g_parser->command_table->cmd = cmd->cmd;
+}
+
+int	add_quote(size_t *i, char c, t_token **head)
+{
+	t_list	*list;
+	char	*str;
+	
+	(*i)++;
+	list = fill_list(i, c);
+	str = list_to_string(list);
+	ft_lstclear(&list, &free_list);
+	(*i)++;
+	if (c == '\'')
+	{
+		if (g_parser->line)
+		{
+			if(ft_redirection(g_parser->line[(*i)], 0) || !g_parser->line[(*i)] || \
+			g_parser->line[(*i)] == '|' || g_parser->line[(*i)] == ' ')
+				ft_lstadd_back_type(head, ft_lstadd_type(str, 1, 0));
+			else
+				ft_lstadd_back_type(head, ft_lstadd_type(str, 1, 1));
+		}
+		(*i) -= 2;
+		free(str);
+		return (1);
+	}
+	add_double_quote(i, c, head, str);
+	(*i) -= 2;
+	return (1);
 }

@@ -1,6 +1,6 @@
 #include "../../inc/minishell.h"
 
-void init_env(t_parser *parser, char **envp)
+void init_env(char **envp)
 {
 	t_env *env;
 	t_list *tmp_list;
@@ -27,5 +27,5 @@ void init_env(t_parser *parser, char **envp)
 		free(env_table);
 		i++;
 	}
-	parser->env = tmp_list;
+	g_parser->env = tmp_list;
 }

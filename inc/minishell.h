@@ -6,7 +6,7 @@
 /*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/02 21:20:29 by mazoukni          #+#    #+#             */
-/*   Updated: 2022/01/23 16:11:27 by mazoukni         ###   ########.fr       */
+/*   Updated: 2022/02/03 15:58:12 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include <signal.h>
+#include <sys/wait.h>
 #include "../libft/libft.h"
 # define TOKEN_CMD 0
 # define TOKEN_OPT 1
@@ -37,6 +38,10 @@ typedef struct s_lexeme
 	int type;
 }	t_lexeme;
 
+typedef struct s_ch
+{
+	char c;
+}				t_ch;
 
 typedef struct	s_node
 {
@@ -44,10 +49,9 @@ typedef struct	s_node
 	struct s_node *left;
 	struct s_node *right;
 }				t_node;
-typedef struct s_token
 
+typedef struct s_token
 {
-	char	c;
 	char	*token;
 	int		type;
 	int		a;
@@ -82,18 +86,33 @@ typedef struct s_parser
 	int		signal;
 }				t_parser;
 
-void init_env(t_parser *parser, char **envp);
-void init_struct(t_parser *parser);
-void	parsing(t_parser *parser);
-t_parser	*initialize_data(t_parser *parser);
-void exit_error(int e);
-t_token	*tockinizer(t_parser *parser, size_t index);
-void	ft_lstadd_back_type(t_parser *parser);
-t_parser	*add_cmd(t_parser *parser, size_t *index);
-void	exec_cmd(t_parser *parser, char **envp);
-void	echo(t_parser *parser);
-void	check_builtins(t_parser *parser, char **envp);
-void	ft_exit();
-void ft_cd(t_parser *parser, char **envp);
-void	ft_pwd(t_parser *parser);
+t_parser *g_parser;
+
+void		init_env(char **envp);
+int			add_quote(size_t *i, char c, t_token **head);
+void		init_struct();
+void		parsing();
+int			initialize_data();
+void		exit_error(int e);
+t_token		*tockinizer(size_t index);
+void		ft_lstadd_back_type(t_token **alst, t_token *new);
+t_token		*ft_lstnew_type(char *content, int i, int b);
+void		add_cmd();
+void		exec_cmd(char **envp);
+void		echo();
+void		check_builtins(char **envp);
+void		ft_exit();
+void		ft_cd();
+void		ft_pwd();
+t_token		*ft_lstadd_type(char *content, int i, int b);
+int			ft_redirection(char c, int i);
+t_list		*fill_list(size_t *i, char c);
+char		*list_to_string(t_list *head);
+void		free_list(void *content);
+void		add_double_quote(size_t *i, char c, t_token **head, char *str);
+int			ft_spaceskip(char *line, int *i);
+void		syntax_error(t_list *types);
+char		*get_sq_word(t_token *types, int i, int *f);
+int			check_words2(int *i, t_token *tmp2);
+void		log_error(char *s);
 #endif

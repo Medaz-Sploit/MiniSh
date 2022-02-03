@@ -6,7 +6,7 @@
 /*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/02 21:21:17 by mazoukni          #+#    #+#             */
-/*   Updated: 2022/01/23 13:56:58 by mazoukni         ###   ########.fr       */
+/*   Updated: 2022/02/02 15:00:48 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,15 @@
 
 int main(int argc, char **argv, char **envp)
 {
-	t_parser *parser;
-	
-	parser = NULL;
 	argv = NULL;
 	argc = 0;
-	parser = initialize_data(parser);
-	init_env(parser, envp);
+	initialize_data();
+	init_env(envp);
 	while (1)
 	{
-		parser->line = readline("\x1B[33mLAIN_IS_LAIN@Medaz-Sploit$> \x1B[37m");
-		parsing(parser);
-		check_builtins(parser, envp);
+		g_parser->line = readline("\x1B[33mLAIN_IS_LAIN@Medaz-Sploit$> \x1B[37m");
+		parsing();
+		check_builtins(envp);
 	}
 	return (0);
 }

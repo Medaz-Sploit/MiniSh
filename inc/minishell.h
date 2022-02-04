@@ -6,7 +6,7 @@
 /*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/02 21:20:29 by mazoukni          #+#    #+#             */
-/*   Updated: 2022/02/03 15:58:12 by mazoukni         ###   ########.fr       */
+/*   Updated: 2022/02/04 16:16:37 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ typedef struct s_cmd
 {
 	char	*cmd;
 	char	**s;
-	t_list	args;
+	t_list	*args;
 	int		input;
 	int		output;
 }				t_cmd;
@@ -76,7 +76,7 @@ typedef struct s_env
 
 typedef struct s_parser
 {
-	t_cmd	*command_table;
+	t_list	*command_table;
 	t_list	*env;
 	t_list	*token;
 	char	*line;
@@ -96,11 +96,11 @@ int			initialize_data();
 void		exit_error(int e);
 t_token		*tockinizer(size_t index);
 void		ft_lstadd_back_type(t_token **alst, t_token *new);
-t_token		*ft_lstnew_type(char *content, int i, int b);
-void		add_cmd();
-void		exec_cmd(char **envp);
+t_token		*ft_lstadd_type(char *content, int i, int b);
+int			add_cmd(size_t *i, t_token **head);
+void		exec_cmd(char **cmd1, t_parser *parser, t_cmd *cmd, char **envp);
 void		echo();
-void		check_builtins(char **envp);
+void		check_builtins(t_parser *parser, t_cmd *cmd, char **envp);
 void		ft_exit();
 void		ft_cd();
 void		ft_pwd();
@@ -115,4 +115,29 @@ void		syntax_error(t_list *types);
 char		*get_sq_word(t_token *types, int i, int *f);
 int			check_words2(int *i, t_token *tmp2);
 void		log_error(char *s);
+void		output(size_t *i, char c, t_token **head);
+void		output(size_t *i, char c, t_token **head);
+void		input(size_t *i, char c, t_token **head);
+void		ffunction(t_token **head, char **tab, size_t i, int f);
+void		ffunction2(t_token **head, char **tab, size_t i, int f);
+void		free_token(void *content);
+void		free_nodes_types(t_token	**list);
+void		expand_cmdlist(t_list *tmp, char *str, t_cmd *cmd);
+void		add_string(t_list **head, char *str);
+void		add_to_lk(char *s, int a, t_ch *tmp, t_list **list_keys);
+t_token		*ft_lstnew_type2(char *content, int i, int a);
+void		add_tab_to_ll(t_token **head, char *str, int type, int a);
+void		init_cmd(t_cmd *cmd);
+int			ft_lstsize_type(t_token *type);
+void		clear_list_files(t_list **list_files);
+void		get_out(int *i, t_list *list_files, t_token *expanded_types);
+void		get_in(int *i, t_list *list_files, t_token *expanded_types);
+t_token		*get_node(t_token *types);
+char		**ll_to_dp(t_list *list);
+void		get_command(t_token *tmp2, char *str, t_cmd **cmd, t_token **expanded_types);
+void		free_table(char **table);
+char		*return_env_value(char *key);
+t_token		*expander(t_token *tmp);
+int			ft_heredoc(char *str);
+t_list		*get_args(t_list **args, t_token *types, t_cmd **cmd);
 #endif

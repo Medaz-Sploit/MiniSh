@@ -1,35 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   echo.c                                             :+:      :+:    :+:   */
+/*   list_tools.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/23 14:24:02 by mazoukni          #+#    #+#             */
-/*   Updated: 2022/02/04 16:10:26 by mazoukni         ###   ########.fr       */
+/*   Created: 2022/02/04 15:49:35 by mazoukni          #+#    #+#             */
+/*   Updated: 2022/02/04 15:52:38 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
 
-void	echo(t_parser *parser, t_cmd *cmd)
+char	**ll_to_dp(t_list *list)
 {
+	int		len;
 	int		i;
-	int		j;
+	char	*l;
 	char	**str;
 
-	str = cmd->s;
+	len = ft_lstsize(list);
+	str = malloc(sizeof(char *) * (len + 1));
 	i = 0;
-	j = 0;
-	while (!ft_strncmp(str[++i], "-n", 3))
-		j = 1;
-	while (str[i])
+	while (list)
 	{
-		write(cmd->output, str[i], strlen(str[i]));
-		if (str[++i])
-			write(cmd->output, " ", 1);
+		str[i] = ft_strdup(list->content);
+		l = (char *)list->content;
+		i++;
+		list = list->next;
 	}
-	if (j == 0)
-		write(cmd->output, "\n", 1);
-	parser->exit_status = 0;
+	str[i] = 0;
+	return (str);
+}
+
+t_token	*get_node(t_token *types)
+{
+	int		a;
+	t_token	*tmp;
+
+	a = 2;
+	tmp = types;
+	while (a-- && tmp)
+		tmp = tmp->next;
+	return (tmp);
 }

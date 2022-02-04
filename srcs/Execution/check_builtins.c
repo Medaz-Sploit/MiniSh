@@ -6,28 +6,33 @@
 /*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/23 13:57:21 by mazoukni          #+#    #+#             */
-/*   Updated: 2022/02/01 21:48:57 by mazoukni         ###   ########.fr       */
+/*   Updated: 2022/02/04 16:10:47 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
 
-void	check_builtins(char **envp)
+void	check_builtins(t_parser *parser, t_cmd *cmd, char **envp)
 {
-	if (!(ft_strncmp(g_parser->command_table->s[0], "echo", 4)))
-		echo();
-	else if (!(ft_strncmp(g_parser->command_table->s[0], "cd", 2)))
-		ft_cd();
-	else if (!(ft_strncmp(g_parser->command_table->s[0], "pwd", 3)))
-		ft_pwd();
-	// else if (!(ft_strncmp(g_parser->command_table->s[0], "export", 6)))
-	// 	printf("Im working");
-	// else if (!(ft_strncmp(g_parser->command_table->s[0], "unset", 5)))
-	// 	printf("Im working");
-	// else if (!(ft_strncmp(g_parser->command_table->s[0], "env", 3)))
-	// 	printf("Im working");
-	else if (!(ft_strncmp(g_parser->command_table->s[0], "exit ", 4)))
-		ft_exit();
+	g_parser->signal = 1;
+	if (parser->number_of_commands == 0 || cmd == NULL)
+		return ;
+	//else if (!strncmp(cmd->s[0], "help", 5))
+	//	do_help();
+	else if (!strncmp(cmd->s[0], "echo", 5))
+		echo(parser, cmd);
+	//else if (!strncmp(cmd->s[0], "exit", 5))
+	//	ft_exit(cmd, parser);
+	//else if (!strncmp(cmd->s[0], "pwd", 4))
+	//	do_pwd(parser, cmd);
+	//else if (!strncmp(cmd->s[0], "env", 4))
+	//	do_env(parser, cmd);
+	//else if (!strncmp(cmd->s[0], "cd", 3))
+	//	ft_docd(parser, cmd);
+	//else if (!strncmp(cmd->s[0], "export", 7))
+	//	do_export(parser, cmd);
+	//else if (!strncmp(cmd->s[0], "unset", 6))
+	//	do_unset(parser, cmd);
 	else
-		exec_cmd(envp);
+		exec_cmd(cmd->s, parser, cmd, envp);
 }

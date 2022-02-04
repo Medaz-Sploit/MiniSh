@@ -6,11 +6,27 @@
 /*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 19:50:45 by mazoukni          #+#    #+#             */
-/*   Updated: 2022/02/02 15:16:47 by mazoukni         ###   ########.fr       */
+/*   Updated: 2022/02/04 16:18:08 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
+
+int	ft_lstsize_type(t_token *type)
+{
+	int		i;
+
+	i = 0;
+	if (type)
+	{
+		while (type)
+		{
+			i++;
+			type = type->next;
+		}
+	}
+	return (i);
+}
 
 t_token	*tockinizer(size_t index)
 {
@@ -21,8 +37,6 @@ t_token	*tockinizer(size_t index)
 	tocken = (void *) 0;
 	sq = 0;
 	dq = 0;
-	g_parser->command_table = (t_cmd *)malloc(sizeof(t_cmd));
-	g_parser->command_table->cmd = NULL;
 	while (1)
 	{
 		if (g_parser->line[index] == '\'' && sq == 0 && dq == 0)
@@ -34,15 +48,19 @@ t_token	*tockinizer(size_t index)
 		else if (g_parser->line[index] == '"' && sq == 0 && dq == 1)
 			dq = 0;
 		else if (g_parser->line[index] == '>' && sq == 0 && dq == 0)
-			;
+			output(&index, '>', &tocken);
 		else if (g_parser->line[index] == '<' && sq == 0 && dq == 0)
-			;
+			input(&index, '<', &tocken);
 		else if (g_parser->line[index] == '|' && sq == 0 && dq == 0)
-			;
+		{
+			ft_lstadd_back(&g_parser->token, ft_lstnew(tocken));
+			tocken = (void *)0;
+		}
+		else if (g_parser->line[index] != ' ')
+			add_cmd(&index, &tocken);
 		if (index++ > ft_strlen(g_parser->line))
 			break;
 	}
-	add_cmd();
 	return (tocken);
 }
 

@@ -6,14 +6,14 @@
 #    By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/02 21:17:27 by mazoukni          #+#    #+#              #
-#    Updated: 2022/02/02 15:22:13 by mazoukni         ###   ########.fr        #
+#    Updated: 2022/02/04 16:21:51 by mazoukni         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = minishell
 CC = gcc
 LIBFT = libft/libft.a
-FLAGS =  -lreadline -Wall -Wextra -Werror
+FLAGS =  -lreadline
 SRC = srcs/Execution/*.c srcs/Parser/*.c srcs/minishell.c
 OBJ = $(SRC:.c=.o)
 

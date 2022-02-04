@@ -6,7 +6,7 @@
 /*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/23 13:57:21 by mazoukni          #+#    #+#             */
-/*   Updated: 2022/02/04 16:10:47 by mazoukni         ###   ########.fr       */
+/*   Updated: 2022/02/04 16:26:22 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	check_builtins(t_parser *parser, t_cmd *cmd, char **envp)
 	//else if (!strncmp(cmd->s[0], "env", 4))
 	//	do_env(parser, cmd);
 	//else if (!strncmp(cmd->s[0], "cd", 3))
-	//	ft_docd(parser, cmd);
+	//	ft_cd(parser, cmd);
 	//else if (!strncmp(cmd->s[0], "export", 7))
 	//	do_export(parser, cmd);
 	//else if (!strncmp(cmd->s[0], "unset", 6))

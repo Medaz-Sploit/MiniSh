@@ -6,7 +6,7 @@
 /*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/02 21:20:29 by mazoukni          #+#    #+#             */
-/*   Updated: 2022/02/04 16:16:37 by mazoukni         ###   ########.fr       */
+/*   Updated: 2022/02/04 19:00:05 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,8 +102,8 @@ void		exec_cmd(char **cmd1, t_parser *parser, t_cmd *cmd, char **envp);
 void		echo();
 void		check_builtins(t_parser *parser, t_cmd *cmd, char **envp);
 void		ft_exit();
-void		ft_cd();
-void		ft_pwd();
+void		ft_cd(t_parser *parser, t_cmd *cmd);
+void		ft_pwd(t_parser *parser, t_cmd *cmd);
 t_token		*ft_lstadd_type(char *content, int i, int b);
 int			ft_redirection(char c, int i);
 t_list		*fill_list(size_t *i, char c);

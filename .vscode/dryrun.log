@@ -1,0 +1,6 @@
+make --dry-run --keep-going --print-directory
+make: Entering directory `/Users/medazsploit/minishell'
+ 
+gcc srcs/Execution/*.c srcs/Parser/*.c srcs/minishell.c libft/libft.a -lreadline -o minishell 
+make: Leaving directory `/Users/medazsploit/minishell'
+ 

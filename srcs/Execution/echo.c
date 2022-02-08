@@ -6,7 +6,7 @@
 /*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/23 14:24:02 by mazoukni          #+#    #+#             */
-/*   Updated: 2022/02/04 16:10:26 by mazoukni         ###   ########.fr       */
+/*   Updated: 2022/02/08 15:13:21 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	echo(t_parser *parser, t_cmd *cmd)
 	str = cmd->s;
 	i = 0;
 	j = 0;
-	while (!ft_strncmp(str[++i], "-n", 3))
+	while (!ft_strncmp(str[i++], "-n", 3) && str[i])
 		j = 1;
 	while (str[i])
 	{

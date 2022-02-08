@@ -6,7 +6,7 @@
 /*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 21:20:44 by mazoukni          #+#    #+#             */
-/*   Updated: 2022/02/08 12:54:51 by mazoukni         ###   ########.fr       */
+/*   Updated: 2022/02/08 14:32:30 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,4 +31,10 @@ void	exec_cmd(char **cmd1, t_parser *parser, t_cmd *cmd, char **envp)
 		ft_putstr_fd("Error: command not found\n", 2);
 		exit(127);
 	}
+}
+
+void	clear(void)
+{
+	ft_lstclear(&g_parser->command_table, &free_cmd);
+	free(g_parser->line);
 }

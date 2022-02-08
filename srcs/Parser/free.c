@@ -6,11 +6,34 @@
 /*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 16:56:50 by mazoukni          #+#    #+#             */
-/*   Updated: 2022/02/04 15:33:09 by mazoukni         ###   ########.fr       */
+/*   Updated: 2022/02/08 14:33:36 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
+
+void	free_cmd(void *content)
+{
+	t_cmd	*tmp;
+	t_list	*args;
+	t_list	*help;
+
+	tmp = (t_cmd *)content;
+	args = tmp->args;
+	while (args)
+	{
+		if (args->next)
+			help = args->next;
+		else
+			help = NULL;
+		free(args->content);
+		free(args);
+		args = help;
+	}
+	free(tmp->cmd);
+	free_table(tmp->s);
+	free(tmp);
+}
 
 void	free_nodes_types(t_token	**list)
 {

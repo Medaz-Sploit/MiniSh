@@ -6,7 +6,7 @@
 /*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/02 21:20:29 by mazoukni          #+#    #+#             */
-/*   Updated: 2022/02/04 19:00:05 by mazoukni         ###   ########.fr       */
+/*   Updated: 2022/02/08 14:33:16 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,4 +140,6 @@ char		*return_env_value(char *key);
 t_token		*expander(t_token *tmp);
 int			ft_heredoc(char *str);
 t_list		*get_args(t_list **args, t_token *types, t_cmd **cmd);
+void		clear(void);
+void		free_cmd(void *content);
 #endif

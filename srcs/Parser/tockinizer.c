@@ -6,7 +6,7 @@
 /*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 19:50:45 by mazoukni          #+#    #+#             */
-/*   Updated: 2022/02/04 16:18:08 by mazoukni         ###   ########.fr       */
+/*   Updated: 2022/02/08 13:02:45 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ t_token	*tockinizer(size_t index)
 		}
 		else if (g_parser->line[index] != ' ')
 			add_cmd(&index, &tocken);
-		if (index++ > ft_strlen(g_parser->line))
+		if (index++ >= ft_strlen(g_parser->line) - 1)
 			break;
 	}
 	return (tocken);

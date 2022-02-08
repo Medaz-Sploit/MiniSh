@@ -6,7 +6,7 @@
 /*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 10:18:16 by mazoukni          #+#    #+#             */
-/*   Updated: 2022/02/04 16:17:38 by mazoukni         ###   ########.fr       */
+/*   Updated: 2022/02/08 12:58:38 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	parsing()
 	cmd = NULL;
 	tocken = tockinizer(0);
 	if (tocken)
-		ft_lstadd_back(&g_parser->token, ft_lstnew(tocken)); // add leximes to tokkens list
+		ft_lstadd_back(&g_parser->token, ft_lstnew(tocken));
 	tmp1 = g_parser->token;
 	syntax_error(tmp1);
 	if (g_parser->syntax_check == 0)

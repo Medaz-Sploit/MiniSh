@@ -6,26 +6,11 @@
 /*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/23 15:40:31 by mazoukni          #+#    #+#             */
-/*   Updated: 2022/02/04 18:57:05 by mazoukni         ###   ########.fr       */
+/*   Updated: 2022/02/09 00:06:01 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
-
-t_env	*ft_lstfind(t_list *lst, char *name)
-{
-	t_env	*env;
-
-	while (lst)
-	{
-		env = (t_env *)lst->content;
-		if (!strncmp(name, env->name, strlen(env->name) + 1))
-			return (env);
-		else
-			lst = lst->next;
-	}
-	return (NULL);
-}
 
 void	change_oldpwd(t_parser *parser)
 {

@@ -6,7 +6,7 @@
 /*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/02 21:20:29 by mazoukni          #+#    #+#             */
-/*   Updated: 2022/02/08 14:33:16 by mazoukni         ###   ########.fr       */
+/*   Updated: 2022/02/09 01:04:23 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,4 +142,15 @@ int			ft_heredoc(char *str);
 t_list		*get_args(t_list **args, t_token *types, t_cmd **cmd);
 void		clear(void);
 void		free_cmd(void *content);
+void		free_env(void *content);
+void		export(t_parser *parser, t_cmd *cmd);
+t_env		*ft_lstfind(t_list *lst, char *name);
+t_env		*ft_lstnewenv(char *name, char *str);
+int			ft_findc(char *str, char c);
+void		ft_printsortlst(t_parser *parser, t_cmd *cmd);
+char		**ft_free_split(char **d);
+void		env(t_parser *parser, t_cmd *cmd);
+void		help(void);
+void		unset(t_parser *parser, t_cmd *cmd);
+void		ft_deletlst(char *name, t_list *env);
 #endif

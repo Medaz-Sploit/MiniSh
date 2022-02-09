@@ -29,3 +29,18 @@ void init_env(char **envp)
 	}
 	g_parser->env = tmp_list;
 }
+
+t_env	*ft_lstfind(t_list *lst, char *name)
+{
+	t_env	*env;
+
+	while (lst)
+	{
+		env = (t_env *)lst->content;
+		if (!ft_strncmp(name, env->name, ft_strlen(env->name) + 1))
+			return (env);
+		else
+			lst = lst->next;
+	}
+	return (NULL);
+}

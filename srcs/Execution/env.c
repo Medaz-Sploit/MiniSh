@@ -1,41 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   echo.c                                             :+:      :+:    :+:   */
+/*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/23 14:24:02 by mazoukni          #+#    #+#             */
-/*   Updated: 2022/02/09 00:17:04 by mazoukni         ###   ########.fr       */
+/*   Created: 2022/02/09 00:12:13 by mazoukni          #+#    #+#             */
+/*   Updated: 2022/02/09 00:13:45 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
 
-void	echo(t_parser *parser, t_cmd *cmd)
+void	env(t_parser *parser, t_cmd *cmd)
 {
-	int		i;
-	int		j;
-	char	**str;
+	t_list	*l;
+	t_env	*env;
 
-	str = cmd->s;
-	i = 0;
-	j = 0;
-	while (!ft_strncmp(str[i++], "-n", 3) && str[i])
-		j = 1;
-	while (str[i])
+	l = parser->env;
+	if (cmd->s[1])
 	{
-		write(cmd->output, str[i], strlen(str[i]));
-		if (str[++i])
-			write(cmd->output, " ", 1);
+		parser->exit_status = 127;
+		return ;
 	}
-	if (j == 0)
+	while (l != NULL)
+	{
+		env = l->content;
+		ft_putstr_fd(env->name, cmd->output);
+		write(cmd->output, "=", 1);
+		ft_putstr_fd(env->content, cmd->output);
 		write(cmd->output, "\n", 1);
+		l = l->next;
+	}
 	parser->exit_status = 0;
-}
-
-void	help(void)
-{
-	ft_putstr_fd("Builtins Commands:\n", 1);
-	ft_putstr_fd("echo\ncd\npwd\nexport\nunset\nenv\nexit\n", 1);
 }

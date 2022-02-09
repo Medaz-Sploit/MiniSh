@@ -6,7 +6,7 @@
 /*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/02 21:21:17 by mazoukni          #+#    #+#             */
-/*   Updated: 2022/02/08 14:31:07 by mazoukni         ###   ########.fr       */
+/*   Updated: 2022/02/08 18:22:39 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int main(int argc, char **argv, char **envp)
 		}
 		clear();
 	}
+	ft_lstclear(&g_parser->env, &free_env);
 	free(g_parser);
 	return (0);
 }

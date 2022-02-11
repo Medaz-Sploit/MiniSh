@@ -14,7 +14,6 @@ void init_env(char **envp)
 	env_table = ft_split(envp[0], '=');
 	env->name = ft_strdup(env_table[0]);
 	env->content = ft_strdup(env_table[1]);
-	free_table(env_table);
 	tmp_list = ft_lstnew(env_table);
 	while (envp[i])
 	{

@@ -6,22 +6,28 @@
 /*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/02 21:20:29 by mazoukni          #+#    #+#             */
-/*   Updated: 2022/02/09 01:04:23 by mazoukni         ###   ########.fr       */
+/*   Updated: 2022/02/10 14:29:04 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
-#include <stddef.h>
-#include <readline/history.h>
-#include <readline/readline.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <fcntl.h>
-#include <signal.h>
-#include <sys/wait.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <unistd.h>
+# include <string.h>
+# include <sys/types.h>
+# include <sys/wait.h>
+# include <signal.h>
+# include <fcntl.h>
+# include <sys/stat.h>
+# include <termios.h>
+# include <termcap.h>
+# include <sys/ioctl.h>
+# include <readline/readline.h>
+# include <readline/history.h>
+# include <sys/time.h>
 #include "../libft/libft.h"
 # define TOKEN_CMD 0
 # define TOKEN_OPT 1
@@ -79,6 +85,7 @@ typedef struct s_parser
 	t_list	*command_table;
 	t_list	*env;
 	t_list	*token;
+	int		f_unset;
 	char	*line;
 	int		exit_status;
 	int		number_of_commands;
@@ -153,4 +160,10 @@ void		env(t_parser *parser, t_cmd *cmd);
 void		help(void);
 void		unset(t_parser *parser, t_cmd *cmd);
 void		ft_deletlst(char *name, t_list *env);
+void		handle_signal(int sig);
+void		mlpipe(t_parser *parser);
+void		execdup(t_parser *parser, int *fds, int x, int fd);
+t_cmd		*ft_findcmd(t_list *data, int id);
+void		free_nodes_env(t_list	**tmp);
+
 #endif

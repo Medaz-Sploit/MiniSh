@@ -6,7 +6,7 @@
 /*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 13:26:42 by mazoukni          #+#    #+#             */
-/*   Updated: 2022/02/05 20:21:14 by mazoukni         ###   ########.fr       */
+/*   Updated: 2022/02/09 04:03:15 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,4 +80,59 @@ int	add_quote(size_t *i, char c, t_token **head)
 	add_double_quote(i, c, head, str);
 	(*i) -= 2;
 	return (1);
+}
+
+void	execdup(t_parser *parser, int *fds, int x, int fd)
+{
+	if (x != 0)
+	{
+		dup2(fd, 0);
+		close(fd);
+	}
+	if (parser->number_of_commands - 1 != x)
+		dup2(fds[1], 1);
+	close(fds[1]);
+	close(fds[0]);
+}
+
+void	ft_exitstatu(int *fd, int *fds, pid_t pid)
+{
+	if (pid == -1)
+		ft_putstr_fd("error : fork failed\n", 2);
+	else
+	{
+		if (*fd)
+			close(*fd);
+		close(fds[1]);
+		*fd = fds[0];
+	}
+}
+
+void	mlpipe(t_parser *parser)
+{
+	int		fds[2];
+	pid_t	*pid;
+	int		i;
+	int		fd;
+
+	i = -1;
+	pid = malloc(sizeof(pid_t *) * (g_parser->number_of_commands + 1));
+	while (++i < parser->number_of_commands)
+	{
+		pipe(fds);
+		pid[i] = fork();
+		if (pid[i] == 0)
+		{
+			execdup(parser, fds, i, fd);
+			check_builtins(parser, ft_findcmd(parser->command_table, i), NULL);
+			exit(parser->exit_status);
+		}
+		ft_exitstatu(&fd, fds, pid[i]);
+	}
+	close (fd);
+	i = -1;
+	while (++i < parser->number_of_commands)
+		waitpid(pid[i], &parser->exit_status, 0);
+	parser->exit_status = WEXITSTATUS(parser->exit_status);
+	free (pid);
 }

@@ -6,7 +6,7 @@
 /*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 18:05:07 by mazoukni          #+#    #+#             */
-/*   Updated: 2022/02/04 15:21:27 by mazoukni         ###   ########.fr       */
+/*   Updated: 2022/02/09 02:58:44 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ void	expand_word2(char *str, t_list **head, int a, size_t i)
 		tmp->c = str[i];
 		if (str[i] == '$')
 		{
+			g_parser->f_unset = 1;
 			f = i;
 			to_skip(str, &i, head, f);
 			free(tmp);

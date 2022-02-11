@@ -1,5 +1,5 @@
-make --dry-run --keep-going --print-directory
+make --dry-run --always-make --keep-going --print-directory
 make: Entering directory `/Users/medazsploit/minishell'
-make: Nothing to be done for `all'.
+gcc srcs/Execution/*.c srcs/Parser/*.c srcs/minishell.c libft/libft.a -lreadline -I /usr/local/opt/readline/include -L /usr/local/opt/readline/lib -Wall -Werror -Wextra -o minishell 
 make: Leaving directory `/Users/medazsploit/minishell'
  

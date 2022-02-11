@@ -6,7 +6,7 @@
 /*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 20:25:05 by mazoukni          #+#    #+#             */
-/*   Updated: 2022/02/03 15:39:28 by mazoukni         ###   ########.fr       */
+/*   Updated: 2022/02/09 03:35:06 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,6 @@ void	syntax_error(t_list *types)
 	}
 	str = g_parser->line;
 	i = ft_strlen(str) - 1;
-	if (str[0] == '|' || str[i] == '|')
+	if (str[0] == '|' || str[i] == '|' || str[0] == '<' || str[0] == '>')
 		log_error("syntax_error\n");
 }

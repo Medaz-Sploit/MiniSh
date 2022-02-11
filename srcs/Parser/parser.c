@@ -6,7 +6,7 @@
 /*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 10:18:16 by mazoukni          #+#    #+#             */
-/*   Updated: 2022/02/08 13:45:43 by mazoukni         ###   ########.fr       */
+/*   Updated: 2022/02/09 02:47:04 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ void	parsing()
 
 	str = NULL;
 	cmd = NULL;
+	g_parser->f_unset = 0;
 	tocken = tockinizer(0);
 	if (tocken)
 		ft_lstadd_back(&g_parser->token, ft_lstnew(tocken));

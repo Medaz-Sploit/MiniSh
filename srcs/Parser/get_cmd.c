@@ -6,7 +6,7 @@
 /*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 15:28:03 by mazoukni          #+#    #+#             */
-/*   Updated: 2022/02/04 15:56:07 by mazoukni         ###   ########.fr       */
+/*   Updated: 2022/02/12 01:38:13 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ char	*get_cmd_path(char *str, t_list *env)
 	{
 		env_l = env_tmp->content;
 		if (!(ft_strncmp(env_l->name, "PATH", 4)))
-			cmd = env_l->content;
+			cmd = env_l->content; 
 		env_tmp = env_tmp->next;
 	}
 	path = ft_split(cmd, ':');
